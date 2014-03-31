@@ -13,8 +13,10 @@ import tzlocal
 localtime = tzlocal.get_localzone()
 
 cfg = {}
-default_config_file = os.path.join(os.environ['HOME'],
-                                   '.config', 'icsremind.yaml')
+default_config_file = os.environ.get(
+    'ICSREMIND_CONFIG',
+    os.path.join(os.environ['HOME'],
+                 '.config', 'icsremind.yaml'))
 
 
 class ConfigurationError(Exception):
